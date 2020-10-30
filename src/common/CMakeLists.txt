@@ -32,10 +32,9 @@ set(SHA3_IMPL sha3/sha3_c.c)
 if(OQS_USE_SHA3_OPENSSL)
     set(SHA3_IMPL ${SHA3_IMPL} sha3/sha3_ossl.c)
 endif()
-if(OQS_USE_AVX2_INSTRUCTIONS AND
-   NOT OQS_BUILD_PORTABLE)
+if(OQS_USE_AVX2_INSTRUCTIONS)
     set(SHA3_IMPL ${SHA3_IMPL} sha3/sha3x4.c)
-    add_compile_options(-mavx2)
+    set_source_files_properties(sha3/sha3x4.c PROPERTIES COMPILE_FLAGS -mavx2)
 endif()
 
 add_library(common OBJECT ${AES_IMPL}
