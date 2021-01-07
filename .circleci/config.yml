@@ -120,7 +120,7 @@ jobs:
       - checkout
       - run:
           name: Build
-          command: ./scripts/build-android.sh $NDK_HOME -a << parameters.ABI >> -s << parameters.SDK >>
+          command: bash ./scripts/build-android.sh $NDK_HOME -a << parameters.ABI >> -s << parameters.SDK >>
 
   macOS:
     description: A template for running liboqs tests on macOS
